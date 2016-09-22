@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  JCIndexTableViewController.h
 //  JCKitHelp
 //
 //  Created by 贾淼 on 16/9/22.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface JCIndexTableViewController : UITableViewController
 
 @end
-
