@@ -20,7 +20,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.titles = @[@"UITabBarItem动画效果"];
+    self.titles = @[@"UITabBarItem动画效果", @"转场动画效果"];
     
     self.classNames = @[@"JCTabBarViewController"];
 }
@@ -46,13 +46,21 @@
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
-    NSString *className = self.classNames[indexPath.row];
-    Class class = NSClassFromString(className);
-    if (class) {
-        UIViewController *ctrl = class.new;
-        ctrl.title = _titles[indexPath.row];
-        [self.navigationController pushViewController:ctrl animated:YES];
+    
+    if (indexPath.row == 0) {
+        NSString *className = self.classNames[indexPath.row];
+        Class class = NSClassFromString(className);
+        if (class) {
+            UIViewController *ctrl = class.new;
+            ctrl.title = _titles[indexPath.row];
+            [self.navigationController pushViewController:ctrl animated:YES];
+        }
+        
+        return;
     }
+    
+    UIViewController *viewController = [[UIStoryboard storyboardWithName:@"TransitionDemo" bundle:nil] instantiateInitialViewController];
+    [self.navigationController pushViewController:viewController animated:YES];
 }
 
 /*
